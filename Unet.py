@@ -3,6 +3,7 @@ from keras.layers import Input, merge, MaxPooling2D, UpSampling2D, Dropout, Conv
 from keras.optimizers import *
 from GetData import DataProcess
 
+
 class Unet(object):
     def __init__(self, img_width=DataProcess().img_width, img_height=DataProcess().img_height):
         self.img_width = img_width
@@ -80,9 +81,10 @@ class Unet(object):
         print("图片数据加载完成")
         model = self.createUnet()
         print("Unet网络创建完成")
-        model.fit(train_npy,label_npy,batch_size=1,epochs=5,verbose=1, validation_split=0.2, shuffle=True,
+        model.fit(train_npy, label_npy, batch_size=1, epochs=5, verbose=1, validation_split=0.2, shuffle=True,
                   callbacks=None)
         model.save('.\\Model\\unet.h5')
+
 
 if __name__ == '__main__':
     myUnet = Unet()

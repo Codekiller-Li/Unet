@@ -6,8 +6,9 @@ import natsort
 from keras.preprocessing import image
 from PIL import Image
 
-width=128
-height=128
+width = 128
+height = 128
+
 
 class DataProcess(object):
     def __init__(self, train_path=".\\ImgData\\TrainData\\", label_path=".\\ImgData\\LabelData\\",
@@ -93,18 +94,19 @@ class DataProcess(object):
         print("存储npy文件完成")
 
     def loadData(self):
-        train_npy=np.load(self.train_npy_path).astype('float32')
-        label_npy=np.load(self.label_npy_path).astype('float32')
-        test_npy=np.load(self.test_npy_path).astype('float32')
+        train_npy = np.load(self.train_npy_path).astype('float32')
+        label_npy = np.load(self.label_npy_path).astype('float32')
+        test_npy = np.load(self.test_npy_path).astype('float32')
 
-        train_npy /=255
-        label_npy /=255
-        test_npy /=255
+        train_npy /= 255
+        label_npy /= 255
+        test_npy /= 255
 
-        label_npy[label_npy>0.5]=1
-        label_npy[label_npy<=0.5]=0
-        #二值化
-        return train_npy,label_npy,test_npy
+        label_npy[label_npy > 0.5] = 1
+        label_npy[label_npy <= 0.5] = 0
+        # 二值化
+        return train_npy, label_npy, test_npy
+
 
 if __name__ == '__main__':
     myData = DataProcess()
